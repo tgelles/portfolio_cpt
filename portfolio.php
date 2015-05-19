@@ -1,8 +1,8 @@
 <?php
 /*
-Plugin Name: Timmy Gelles Portfolio
+Plugin Name: Timmy Gelles Portfolio Items
 Plugin URI:  http://timmygelles.com
-Description:Custom Content Type Portfolio
+Description: My Work
 Version: 1.0
 Author: Timmy Gelles
 Author URI: mailto:timothygelles@gmail.com
@@ -71,6 +71,7 @@ function register_portfolio_posttype() {
 			'capability_type' 	=> 'post',
 			'has_archive' 		=> false,
 			'hierarchical' 		=> true,
+			'menu_icon'         => 'dashicons-portfolio',
 			'rewrite' 			=> array('slug' => 'portfolio', 'with_front' => false ),
 			'supports' 			=> $supports,
 			'menu_position' 	=> 5,
@@ -90,7 +91,7 @@ $portfolioinformation_5_metabox = array(
 	'fields' => array(
 
 		array(
-			'title' 		=> 'Portfolio Item Title',
+			'name' 		=> 'Title',
 			'desc' 			=> '',
 			'id' 				=> 'ecpt_portfolio_title',
 			'class' 			=> 'ecpt_portfolio_title',
@@ -105,17 +106,28 @@ $portfolioinformation_5_metabox = array(
 			'desc' 			=> '',
 			'id' 				=> 'ecpt_portfolio_overview',
 			'class' 			=> 'ecpt_portfolio_overview',
-			'type' 			=> 'textarea',
-			'rich_editor' 	=> 1,			
+			'type' 			=> 'text',
+			'rich_editor' 	=> 0,			
 			'max' 			=> 0,
 			'std'			=> ''	
 			),
 
 		array(
+			'name' 			=> 'Details',
+			'desc' 			=> '',
+			'id' 				=> 'ecpt_portfolio_details',
+			'class' 			=> 'ecpt_portfolio_details',
+			'type' 			=> 'text',
+			'rich_editor' 	=> 0,			
+			'max' 			=> 0,
+			'std'			=> ''			
+			),
+
+		array(
 			'name' 			=> 'Role',
 			'desc' 			=> '',
-			'id' 				=> 'ecpt_role',
-			'class' 			=> 'ecpt_role',
+			'id' 				=> 'ecpt_portfolio_role',
+			'class' 			=> 'ecpt_portfolio_role',
 			'type' 			=> 'text',
 			'rich_editor' 	=> 0,			
 			'max' 			=> 0,
@@ -125,8 +137,8 @@ $portfolioinformation_5_metabox = array(
 		array(
 			'name' 			=> 'Link',
 			'desc' 			=> '',
-			'id' 				=> 'ecpt_link',
-			'class' 			=> 'ecpt_link',
+			'id' 				=> 'ecpt_portfolio_link',
+			'class' 			=> 'ecpt_portfolio_link',
 			'type' 			=> 'text',
 			'rich_editor' 	=> 0,			
 			'max' 			=> 0,
@@ -283,18 +295,18 @@ function my_portfolio_columns( $columns ) {
 	return $columns;
 }
 
-add_action( 'manage_studyfields_posts_custom_column', 'my_manage_portfolio_columns', 10, 2 );
+add_action( 'manage_portfolio_posts_custom_column', 'my_manage_portfolio_columns', 10, 2 );
 
-function my_manage_program_columns( $column, $post_id ) {
+function my_manage_portfolio_columns( $column, $post_id ) {
 	global $post;
 
 	switch( $column ) {
 
-		/* If displaying the 'program_type' column. */
+		/* If displaying the 'portfolio_type' column. */
 
 		case 'portfolio' :
 
-			/* Get the program_types for the post. */
+			/* Get the portfolio_types for the post. */
 			$terms = get_the_terms( $post_id, 'portfolio_type' );
 
 			/* If terms were found. */
