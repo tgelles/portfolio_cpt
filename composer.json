@@ -1,5 +1,5 @@
 {
-  "name": "tgelles/portfolio",
+  "name": "tgelles/portfolio_cpt",
   "type": "wordpress-plugin",
   "license": "GPL2",
   "description": "Creates a custom post type for my work.",
