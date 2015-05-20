@@ -1,0 +1,28 @@
+{
+  "name": "tgelles/portfolio",
+  "type": "wordpress-plugin",
+  "license": "GPL2",
+  "description": "Creates a custom post type for my work.",
+  "homepage": "http://github.com/tgelles/portfolio_cpt",
+  "authors": [
+      {
+      "name": "Timmy Gelles",
+      "email": "timothygelles@gmail.com",
+      "homepage": "http://timmygelles.com"
+      }
+    ],
+    "keywords": [
+      "wordpress"
+    ],
+  "support": {
+    "issues": "http://timmygelles.com"
+  },
+  "require": {
+    "php": ">=5.3.0",
+    "composer/installers": "~1.0"
+  },
+  "replace": {
+        "cpeckens/plugin_courses": "1.0.*"
+    }
+}
+
